@@ -10,7 +10,7 @@ export default function GetStartedScreen() {
 
   const handleGetStarted = () => {
     completeOnboarding();
-    router.replace('/(tabs)/jobs');
+    router.replace('/main');
   };
 
   return (
