@@ -20,7 +20,7 @@ export default function OnboardingScreen() {
         
         <TouchableOpacity 
           style={styles.button}
-          onPress={() => router.push('/onboarding/features')}
+          onPress={() => router.push('/onboarding/skill-matching')}
           activeOpacity={0.8}
         >
           <Text style={styles.buttonText}>NEXT &gt;&gt;&gt;</Text>
