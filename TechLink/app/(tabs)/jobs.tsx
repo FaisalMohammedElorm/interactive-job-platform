@@ -7,9 +7,10 @@ import {
   FlatList,
   TouchableOpacity,
   ScrollView,
+  Image,
 } from 'react-native';
-import { Stack } from 'expo-router';
-import { Search, Briefcase, MapPin, Star } from 'lucide-react-native';
+import { Stack, router } from 'expo-router';
+import { Search, Briefcase, MapPin, Star, Bell, ArrowLeft } from 'lucide-react-native';
 import { useApp } from '@/contexts/AppContext';
 import { Job } from '@/types';
 
@@ -66,7 +67,25 @@ export default function JobsScreen() {
       <Stack.Screen options={{ title: 'Jobs' }} />
       <View style={styles.container}>
         <View style={styles.header}>
-          <Text style={styles.heading}>WHAT BRINGS YOU HERE?</Text>
+          <View style={styles.headerTop}>
+            <View style={styles.leftSection}>
+              <TouchableOpacity 
+                style={styles.backButton} 
+                onPress={() => router.push('/main')}
+                activeOpacity={0.7}
+              >
+                <ArrowLeft size={24} color="#1E293B" strokeWidth={2} />
+              </TouchableOpacity>
+              <Image 
+                source={require('@/assets/images/TechLinkLogo.png')} 
+                style={styles.logo}
+                resizeMode="contain"
+              />
+            </View>
+            <TouchableOpacity style={styles.notificationButton} activeOpacity={0.7}>
+              <Bell size={24} color="#1E293B" strokeWidth={2} />
+            </TouchableOpacity>
+          </View>
           
           <View style={styles.searchContainer}>
             <Search size={20} color="#94A3B8" style={styles.searchIcon} />
@@ -133,11 +152,27 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: '#E2E8F0',
   },
-  heading: {
-    fontSize: 20,
-    fontWeight: '700' as const,
-    color: '#1E293B',
+  headerTop: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
     marginBottom: 16,
+  },
+  leftSection: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    flex: 1,
+  },
+  backButton: {
+    padding: 8,
+    marginRight: 12,
+  },
+  logo: {
+    width: 290,
+    height: 60,
+  },
+  notificationButton: {
+    padding: 8,
   },
   searchContainer: {
     flexDirection: 'row',

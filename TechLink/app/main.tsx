@@ -1,13 +1,19 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, Dimensions } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { router } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons'; // or react-native-vector-icons
 
-const { width } = Dimensions.get('window');
-
 export default function main() {
-  const handlePress = (action) => {
+  const handlePress = (action: string) => {
     console.log(`${action} pressed`);
-    // Navigate to respective screens
+    if (action === 'Search Tech Role') {
+      router.push('/(tabs)/jobs');
+    } else if (action === 'Offer Tech Roles') {
+      router.push('/offer-tech');
+    } else if (action === 'Become a Tutor') {
+      router.push('/become-tutor');
+    }
+    // Navigate to respective screens for other actions
   };
 
   return (
